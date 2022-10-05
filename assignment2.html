@@ -15,8 +15,7 @@
  <link href="https://unpkg.com/jspsych@7.3.0/css/jspsych.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<script>  var jsPsych = initJsPsych({
-    on_finish: function() {  jsPsych.data.displayData(); }});
+<script>  const jsPsych = initJsPsych()
 
 var subject_id = Math.floor(Math.random()*100000);
 
@@ -81,11 +80,11 @@ var response = {
     list_number: jsPsych.timelineVariable('list'),
     trialcondition: jsPsych.timelineVariable('prime_condition'),
     subject: subject_id},
-    on_finish: function(data){
-   // score the response as correct or incorrect.
-    if(jsPsych.pluginAPI.compareKeys(data.response, jsPsych.timelineVariable ('target'))) {
-    data.correct = true;}
-    else {data.correct = false;}}
+    // on_finish: function(data){
+    // score the response as correct or incorrect.
+    // if(jsPsych.pluginAPI.compareKeys(data.response, jsPsych.timelineVariable ('target'))) {
+    //data.correct = true;}
+    //else {data.correct = false;}}
 }
 
 var list = [1,2,3,4]
@@ -108,7 +107,7 @@ var experiment_procedure = {
     randomize_order: true};
 
 var practice_procedure = {
-    timeline: [sentence, prime, state, response, feedback],
+    timeline: [sentence, prime, state, response ],
     timeline_variables: practicestimuli,
     randomize_order: true};
 
